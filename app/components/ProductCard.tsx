@@ -10,7 +10,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
     return (
-        <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition bg-white flex flex-col">
+        <div className="border rounded-lg p-4 shadow-sm hover:shadow-xl/30 transition bg-white flex flex-col">
             <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4">
                 <Image
                     src={product.image}
@@ -30,7 +30,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </Link>
             <div className="mt-auto flex items-center justify-between pt-4">
                 <span className="font-semibold text-lg">
-                    ${product.price}
+                    $ {product.price}
                 </span>
             </div>
         </div>
