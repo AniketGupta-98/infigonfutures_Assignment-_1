@@ -25,7 +25,7 @@ export default function HomePage() {
   const filteredProducts = useMemo(() => {
     return products
       .filter((p) => p.title.toLowerCase().includes(search.toLowerCase()))
-      .filter((p) => (category ? p.category === category : true))
+      .filter((p) => (category ? p.category == category : true))
 
   }, [products, search, category]);
 
@@ -39,7 +39,6 @@ export default function HomePage() {
             value={category}
             onChange={setCategory}
           />
-
         </div>
         <ProductGrid products={filteredProducts} />
       </> : <Skeleton />}
