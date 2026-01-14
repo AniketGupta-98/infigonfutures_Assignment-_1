@@ -5,8 +5,13 @@ export default function Skeleton() {
                 <div className="w-full md:max-w-sm rounded-lg border">
                     <div className="h-10 w-full animate-pulse rounded-md border border-gray-200 bg-gray-200"></div>
                 </div>
-                <div className="w-full md:w-40 rounded-lg border">
-                    <div className="h-10 w-full animate-pulse rounded-md bg-gray-200"></div>
+                <div className="flex gap-3">
+                    <div className="w-full md:w-39 rounded-lg border">
+                        <div className="h-10 w-full animate-pulse rounded-md bg-gray-200"></div>
+                    </div>
+                    <div className="w-full md:w-22 rounded-lg border">
+                        <div className="h-10 w-full animate-pulse rounded-md bg-gray-200"></div>
+                    </div>
                 </div>
             </div>
 

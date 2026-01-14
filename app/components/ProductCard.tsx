@@ -3,15 +3,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "../types/product";
+import FavoriteToggle from "./FavoriteToggle";
 
 interface ProductCardProps {
     product: Product;
+    favorites: number[];
+    toggleFavorite: (id: number) => void;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({
+    product,
+    favorites,
+    toggleFavorite,
+}: ProductCardProps) {
+
+
+    const isFavorite = favorites.includes(product.id);
+
     return (
         <div className="border rounded-lg p-4 shadow-sm hover:shadow-xl/30 transition bg-white flex flex-col">
-            <Link href={`/products/${product.id}`} className="relative w-full h-48 mb-4">
+            <Link
+                href={`/products/${product.id}`}
+                className="relative w-full h-48 mb-4"
+            >
                 <Image
                     src={product.image}
                     alt={product.title}
@@ -20,18 +34,23 @@ export default function ProductCard({ product }: ProductCardProps) {
                     sizes="(max-width: 768px) 100vw, 25vw"
                 />
             </Link>
+
             <span className="text-xs text-gray-500 uppercase mb-1">
                 {product.category}
             </span>
+
             <Link href={`/products/${product.id}`}>
                 <h3 className="font-medium text-sm line-clamp-2 hover:underline">
                     {product.title}
                 </h3>
             </Link>
+
             <div className="mt-auto flex items-center justify-between pt-4">
-                <span className="font-semibold text-lg">
-                    $ {product.price}
-                </span>
+                <span className="font-semibold text-lg">$ {product.price}</span>
+                <FavoriteToggle
+                    isFavorite={isFavorite}
+                    onToggle={() => toggleFavorite(product.id)}
+                />
             </div>
         </div>
     );
