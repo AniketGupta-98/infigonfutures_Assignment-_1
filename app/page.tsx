@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+
 import { fetchProducts } from "./lib/api";
 import { Product } from "./types/product";
+import ProductCard from "./components/ProductCard"
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,7 +23,7 @@ export default function HomePage() {
     <main className="p-6 max-w-7xl mx-auto">
 
       {products.map((item) => {
-        return <p>{item.title}</p>
+        return <ProductCard key={item.id} product={item} />
       })}
 
     </main>
